@@ -1,9 +1,26 @@
 import Frame from "./Frame"
 import ErrorPage from "./ErrorPage"
 import PasswordInput from "./PasswordInput"
+import axios from "axios"
 
 function Register(){
     const token = localStorage.getItem('auth-token')
+
+    const registerUser = async(user, email, password)=>{
+        await axios.post("https://passwordmanagerback.onrender.com/auth/register", {
+            user: user,
+            email: email,
+            password: password
+        }).then(()=>{
+            window.location.href = "/login"
+        }).catch((e)=>{
+            console.error(e)
+            return (
+                <ErrorPage />
+            )
+        })
+    }
+
     if(!token){
         return (
             <Frame flexcol={true}>
@@ -19,7 +36,12 @@ function Register(){
                     </section>
                     <PasswordInput label={"Password: "}/>
                     <PasswordInput label={"Repeat Password: "}/>
-                    <button className="mt-6 bg-teal-600 border-transparent hover:border-teal-400 hover:scale-105 transition-all ease-in-out">Sign In</button>
+                    <button className="mt-6 bg-teal-600 border-transparent hover:border-teal-400 hover:scale-105 transition-all ease-in-out" onClick={()=>{
+                        const user = document.getElementsByName("username")[0]
+                        const email = document.getElementsByName("email")[0]
+                        const password = document.getElementsByName("password")[0]
+                        registerUser(user, email, password)
+                    }}>Sign In</button>
                     <span className="mt-6 font-semibold">Alredy have an account? <a className=" text-teal-600 cursor-pointer hover:text-teal-500 transition-all ease-in" href="/login">Log in</a></span>
                 </section>
             </Frame> 
