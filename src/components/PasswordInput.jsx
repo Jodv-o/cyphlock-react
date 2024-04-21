@@ -7,7 +7,7 @@ function PasswordInput({label}){
                 e.preventDefault()
                 let passwordInput = e.target.closest('section').children[1]
                 passwordInput.type = passwordInput.type === 'password'? 'text' : 'password'
-            }}><img src="../../dist/assets/eye-solid.svg" alt="view" className="w-5"/></button>
+            }}><img src="/eye-solid.svg" alt="view" className="w-5"/></button>
         </section>
     )
 }
