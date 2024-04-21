@@ -56,11 +56,11 @@ function Dashboard(){
                         passwords.map((password)=>{
                                 return <section className="password bg-[#353535] mx-[10%] my-4 w-[80%] h-24 rounded-md flex flex-col items-center justify-center relative" key={password.passwordid} id={password.passwordid}>
                                         <details className="absolute bottom-[60%] left-[92%]">
-                                            <summary className="list-none cursor-pointer"><img src="../../public/list_dots.svg" alt="more" className="w-[6px]"/></summary>
+                                            <summary className="list-none cursor-pointer"><img src="../../dist/assets/list_dots.svg" alt="more" className="w-[6px]"/></summary>
                                             <section className="absolute right-4 -top-1 w-20 h-10 flex flex-col shadow-lg shadow-[#242424] bg-transparent rounded-md">
                                                 <button className="relative bg-transparent flex justify-center items-center h-full rounded-none focus:outline-none" onClick={()=>{
                                                     deletePassword(password.passwordid, token)
-                                                }}><img src="../../public/delete-red.svg" alt="delete" className="w-3"/></button>
+                                                }}><img src="../../dist/assets/delete-red.svg" alt="delete" className="w-3"/></button>
                                             </section>
                                         </details>
                                         <section className="flex flex-col w-full gap-2 p-2 ml-4">
@@ -70,7 +70,7 @@ function Dashboard(){
                                                 e.preventDefault()
                                                 let passwordInput = e.target.closest('section').children[1]
                                                 passwordInput.type = passwordInput.type === 'password'? 'text' : 'password'
-                                            }}><img src="../../public/eye-solid.svg" alt="view" className="w-5"/></button>
+                                            }}><img src="../../dist/assets/eye-solid.svg" alt="view" className="w-5"/></button>
                                         </section>
                                     </section>
                         })
@@ -78,7 +78,7 @@ function Dashboard(){
                 </section>
                 <button className="bg-transparent" onClick={()=>{
                     window.location.href = "/create";
-                }}><img src="../../public/add.svg" alt="add" className="w-5"/></button>
+                }}><img src="../../dist/assets/add.svg" alt="add" className="w-5"/></button>
             </Frame>
         )
     }
