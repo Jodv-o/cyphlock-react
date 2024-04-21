@@ -1,7 +1,7 @@
 import Frame from "./Frame"
 import ErrorPage from "./ErrorPage";
 import axios from 'axios'	
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Dashboard(){
     const token = localStorage.getItem('auth-token')
@@ -41,10 +41,14 @@ function Dashboard(){
         }).catch(err=>{console.log(err)})
     }*/
 
-    if(token){
-        window.onload = async()=>{
+    useEffect(()=>{
+        const getSetUserPasswords = async ()=>{
             setPasswords(await getPasswords(token))
         }
+        getSetUserPasswords()
+    }, [token])
+
+    if(token){
         return(
             <Frame flexcol={true}>
                 <section className="max-h-[80vh] mt-8 w-screen grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -74,7 +78,7 @@ function Dashboard(){
                 </section>
                 <button className="bg-transparent" onClick={()=>{
                     window.location.href = "/create";
-                }}><img src="../../public/add.png"/></button>
+                }}><img src="../../public/add.svg" alt="add" className="w-5"/></button>
             </Frame>
         )
     }
