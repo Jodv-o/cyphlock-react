@@ -14,7 +14,6 @@ function Create(){
         }, {headers: {
             Authorization: token
         }}).then(()=>{
-            toast.success("Password added successfully!!")
             window.location.href = "/dashboard"
         }).catch(err=>{toast.error(err.response.data.message)})
     }
@@ -38,7 +37,7 @@ function Create(){
                         <button className="mt-6 bg-teal-600 border-transparent hover:border-teal-400 hover:scale-105 transition-all ease-in-out" type="submit">Add</button>
                         <button className="mt-6 bg-red-600 border-transparent hover:border-red-400 hover:scale-105 transition-all ease-in-out" onClick={()=>{
                             window.location.href = "/dashboard"
-                        }}>Cancel</button>
+                        }} type="button">Cancel</button>
                     </section>
                 </form>
             </Frame>
