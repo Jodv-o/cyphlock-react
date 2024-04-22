@@ -27,7 +27,7 @@ function Create(){
                     let password = document.getElementsByName('password')[0].value
                     addPassword(name, password, token)
                 }}>
-                    <h1 className="mb-2">Add Password</h1>
+                    <h1 className="mb-2 text-2xl sm:text-5xl">Add Password</h1>
                     <section className="flex flex-col m-2 w-full px-16">
                         <label>Name </label>
                         <input type="text" name="name" className="p-1 outline-none border-teal-600 focus:border-b-2 transition-all ease-in" required/>
