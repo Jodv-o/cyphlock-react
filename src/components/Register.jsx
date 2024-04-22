@@ -37,9 +37,9 @@ function Register(){
                     <PasswordInput label={"Password: "}/>
                     <PasswordInput label={"Repeat Password: "}/>
                     <button className="mt-6 bg-teal-600 border-transparent hover:border-teal-400 hover:scale-105 transition-all ease-in-out" onClick={()=>{
-                        const user = document.getElementsByName("username")[0]
-                        const email = document.getElementsByName("email")[0]
-                        const password = document.getElementsByName("password")[0]
+                        const user = document.getElementsByName("username")[0].value
+                        const email = document.getElementsByName("email")[0].value
+                        const password = document.getElementsByName("password")[0].value
                         registerUser(user, email, password)
                     }}>Sign In</button>
                     <span className="mt-6 font-semibold">Alredy have an account? <a className=" text-teal-600 cursor-pointer hover:text-teal-500 transition-all ease-in" href="/login">Log in</a></span>
