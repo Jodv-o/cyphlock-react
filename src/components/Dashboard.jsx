@@ -2,6 +2,7 @@ import Frame from "./Frame"
 import ErrorPage from "./ErrorPage";
 import axios from 'axios'	
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 function Dashboard(){
     const token = localStorage.getItem('auth-token')
@@ -23,9 +24,10 @@ function Dashboard(){
             headers: {
                 Authorization: token
             }
-        }).then(()=>{
+        }).then(async ()=>{
             window.location.reload()
-        }).catch(err=>{console.log(err)})
+            toast.success("Password deleted successfully")
+        }).catch(err=>toast.error(err.response.data.message))
     }
 
     /*async function updatePassword(id, name, password, token){

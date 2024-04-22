@@ -2,6 +2,7 @@ import Frame from "./Frame"
 import ErrorPage from "./ErrorPage"
 import PasswordInput from "./PasswordInput"
 import axios from "axios"
+import { toast } from "react-toastify"
 
 function Register(){
     const token = localStorage.getItem('auth-token')
@@ -12,9 +13,10 @@ function Register(){
             email: email,
             password: password
         }).then(()=>{
+            toast.success("Account created successfully!")
             window.location.href = "/login"
         }).catch((e)=>{
-            console.error(e)
+            toast.error(e.response.data.message)
             return (
                 <ErrorPage />
             )
@@ -44,7 +46,7 @@ function Register(){
                     }}>Sign In</button>
                     <span className="mt-6 font-semibold">Alredy have an account? <a className=" text-teal-600 cursor-pointer hover:text-teal-500 transition-all ease-in" href="/login">Log in</a></span>
                 </section>
-            </Frame> 
+            </Frame>
         )
     }else{
         return(<ErrorPage/>)

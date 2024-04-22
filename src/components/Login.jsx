@@ -2,6 +2,7 @@ import Frame from "./Frame"
 import ErrorPage from "./ErrorPage"
 import axios from 'axios'
 import PasswordInput from "./PasswordInput"
+import { toast } from "react-toastify"
 
 function Login(){
     const token = localStorage.getItem('auth-token')
@@ -9,10 +10,10 @@ function Login(){
         axios.post('https://passwordmanagerback.onrender.com/auth/login', {
             credential: credential,
             password: password
-        }).then(resp => {
+        }).then(async resp => {
             localStorage.setItem('auth-token', `JWT ${resp.data.token}`)
             window.location.href = "/dashboard"
-        }).catch(err => { window.location.href = "/404"; console.log(err) })
+        }).catch(err => { toast.error(err.response.data.message) })
     }
     if(!token){
         return (

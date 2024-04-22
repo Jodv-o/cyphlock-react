@@ -2,6 +2,7 @@ import Frame from "./Frame"
 import ErrorPage from "./ErrorPage"
 import PasswordInput from "./PasswordInput"
 import axios from 'axios'
+import { toast } from'react-toastify'
 
 function Create(){
     const token = localStorage.getItem('auth-token')
@@ -13,8 +14,9 @@ function Create(){
         }, {headers: {
             Authorization: token
         }}).then(()=>{
+            toast.success("Password added successfully!!")
             window.location.href = "/dashboard"
-        }).catch(err=>{console.log(err)})
+        }).catch(err=>{toast.error(err.response.data.message)})
     }
 
     if(token){
