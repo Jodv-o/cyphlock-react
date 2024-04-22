@@ -67,7 +67,11 @@ function Dashboard(){
                                         </details>
                                         <section className="flex flex-col w-full gap-2 p-2 ml-4">
                                             <input type="text" name="name" className="w-3/6 px-2 bg-transparent" disabled value={password.name}/>
-                                            <input type="password" name="password" className="w-3/6 px-2 bg-transparent hover:cursor-pointer" disabled value={password.password}/>
+                                            <div onClick={async()=>{
+                                                await navigator.clipboard.writeText(password.password)
+                                            }} title="Click to copy to clipboard!" className="w-3/6 h-full bg-transparent">
+                                                <input type="password" name="password" className="w-3/6 px-2 bg-transparent" disabled value={password.password}/>
+                                            </div>
                                             <button className="absolute bg-transparent top-[2.85rem] left-2/4 border-none focus:outline-none" type="button" onClick={(e)=>{
                                                 e.preventDefault()
                                                 let passwordInput = e.target.closest('section').children[1]
