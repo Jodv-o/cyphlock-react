@@ -69,12 +69,12 @@ function Dashboard(){
                                             <input type="text" name="name" className="w-3/6 px-2 bg-transparent" disabled value={password.name}/>
                                             <div onClick={async()=>{
                                                 await navigator.clipboard.writeText(password.password)
-                                            }} title="Click to copy to clipboard!" className="w-3/6 h-full bg-transparent">
-                                                <input type="password" name="password" className="w-3/6 px-2 bg-transparent" disabled value={password.password}/>
+                                            }} title="Click to copy to clipboard!" className="w-2/3 h-full bg-transparent">
+                                                <input type="password" name="password" className=" w-2/3 px-2 bg-transparent" disabled value={password.password}/>
                                             </div>
                                             <button className="absolute bg-transparent top-[2.85rem] left-2/4 border-none focus:outline-none" type="button" onClick={(e)=>{
                                                 e.preventDefault()
-                                                let passwordInput = e.target.closest('section').children[1]
+                                                let passwordInput = e.target.closest('section').children[1].children[0]
                                                 passwordInput.type = passwordInput.type === 'password'? 'text' : 'password'
                                             }}><img src="/eye-solid.svg" alt="view" className="w-5"/></button>
                                         </section>
