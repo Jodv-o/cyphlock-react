@@ -69,6 +69,7 @@ function Dashboard(){
                                             <input type="text" name="name" className="w-3/6 px-2 bg-transparent" disabled value={password.name}/>
                                             <div onClick={async()=>{
                                                 await navigator.clipboard.writeText(password.password)
+                                                toast.success("Password copied to clipboard!")
                                             }} title="Click to copy to clipboard!" className="w-2/3 h-full bg-transparent">
                                                 <input type="password" name="password" className=" w-2/3 px-2 bg-transparent" disabled value={password.password}/>
                                             </div>
